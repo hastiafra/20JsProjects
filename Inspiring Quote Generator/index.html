@@ -12,7 +12,8 @@
     <title>Quote Generator</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="quoteContainer">
+      <p>Get Inspired</p>
         <!-- quote -->
         <div class="quote-text">
           <i class="fa fa-quote-left">
@@ -26,16 +27,16 @@
         </div>
         <!-- button -->
         <div class="button-container">
-            <button class="twitter" title="Tweet this!">
+            <button class="twitter" id="tweet" title="Tweet this!">
                 <i class="fa fa-twitter"></i>
             </button>
-            <button class="newQuote" id="newquote">New Quote</button>
+            <button class="newQuote" id="newQuote">New Quote</button>
 
-        </div>
-
-
-		
+        </div>	
 	</div>
+
+  <!-- loader -->
+  <div class="loader" id="loader"></div>
     <!-- script -->
     <script src="script.js"></script>
   </body>
