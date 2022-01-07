@@ -1,24 +1,24 @@
 let quoteText = document.getElementById("quote");
 let tweetBtn = document.getElementById("tweet");
-let newQuote = document.getElementById("newQuote")
+let newQuote = document.getElementById("newQuote");
 let authorText = document.getElementById("author");
 const loader = document.getElementById("loader");
 const quoteContainer = document.getElementById("quoteContainer");
 
 let apiQuotes = [];
 
-const loading = () =>{
-loader.hidden=false;
-quoteContainer.hidden=true;
-}
+const showLoading = () => {
+  loader.hidden = false;
+  quoteContainer.hidden = true;
+};
 
-const complete = () =>{
-  loader.hidden=true;
-quoteContainer.hidden=false;
-}
+const removeLoading = () => {
+  loader.hidden = true;
+  quoteContainer.hidden = false;
+};
 
 const randomQuote = () => {
-  loading();
+  showLoading();
   const newQuote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
   // if author is unknown
@@ -37,13 +37,13 @@ const randomQuote = () => {
   }
 
   quoteText.textContent = newQuote.text;
-  complete();
+  removeLoading();
 };
 
 // get quotes from API
 
 const getQuotes = async () => {
-  loading();
+  showLoading();
 
   const api_url = "https://type.fit/api/quotes";
 
@@ -51,22 +51,19 @@ const getQuotes = async () => {
     const response = await fetch(api_url);
     apiQuotes = await response.json();
     randomQuote();
-    
   } catch (error) {
     response.status(500).json({ status: "Error", msg: error.message });
-  } 
+  }
 };
-
 
 //tweet the quote
 
-const tweetQuote = () =>{
- const tweetUrl= `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
- window.open(tweetUrl, "_blank");
-}
+const tweetQuote = () => {
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+  window.open(tweetUrl, "_blank");
+};
 
 newQuote.addEventListener("click", randomQuote);
 tweetBtn.addEventListener("click", tweetQuote);
 
- getQuotes();
-
+getQuotes();
