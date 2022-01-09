@@ -37,7 +37,7 @@ body {
 }
 
 .img-container {
-  columns: 3;
+  columns: 2;
   column-gap: 0.5rem;
   margin: 10px 15%;
   overflow: hidden;
