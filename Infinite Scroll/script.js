@@ -1,6 +1,6 @@
+import {APIKEY} from "./env.js";
 
-require("dotenv").config();
-const My_key = process.env.apiUrl;
+console.log(APIKEY)
 
 const getPhotos = async () => {
 
