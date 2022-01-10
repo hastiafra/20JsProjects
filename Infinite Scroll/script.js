@@ -1,57 +1,67 @@
-import {APIKEY} from "./env.js";
+import { APIKEY } from "./env.js";
 
 const container = document.getElementById("img-container");
 
 const loader = document.getElementById("loader");
 
-let photosArr=[];
+let photosArr = [];
+let count = 2;
 
+let ready = false;
+let imgsLoaded = 0;
+let totalImgs = 0;
 
+const imgLoaded = () => {
+  imgsLoaded++;
 
-
-const getPhotos = async () => {
-  
-  try {
-    const response = await fetch(APIKEY);
-    photosArr = await response.json();
-    // console.log(photosArr);
-    displayPhotos();
-
-  } catch (error) {
-    console.log(error);
-  
+  if (imgsLoaded === totalImgs) {
+    ready = true;
+    loader.hidden = true;
+    count = 10;
   }
 };
 
-const displayPhotos = () =>{
-  console.log(photosArr);
+const getPhotos = async () => {
+  try {
+    const response = await fetch(APIKEY);
+    photosArr = await response.json();
 
-  photosArr.forEach((photo)=>{
+    displayPhotos();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+const displayPhotos = () => {
+  imgsLoaded = 0;
+
+  totalImgs = photosArr.length;
+  console.log(totalImgs);
+
+  photosArr.forEach((photo) => {
     const item = document.createElement("a");
-
     item.setAttribute("href", photo.links.html);
-    item.setAttribute("target","_blank");
-    let img = document.createElement("img");
+    item.setAttribute("target", "_blank");
 
-    img.src= `${photo.urls.regular}`;
-    img.setAttribute("alt",photo.alt_description);
-    img.setAttribute("title",photo.alt_description);
-  
+    let img = document.createElement("img");
+    img.src = `${photo.urls.regular}`;
+    img.setAttribute("alt", photo.alt_description);
+    img.setAttribute("title", photo.alt_description);
+
+    img.addEventListener("load", imgLoaded);
+
     item.appendChild(img);
     container.appendChild(item);
+  });
+};
 
-
-
-  })
-}
-
-
-window.addEventListener("scroll", ()=>{
-  if(window.innerHeight + window.scrollY>=document.body.offsetHeight -1000){
-   
+window.addEventListener("scroll", () => {
+  if (
+    window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 &&
+    ready
+  ) {
+    ready = false;
     getPhotos();
-    console.log("load more")
   }
-})
+});
 getPhotos();
