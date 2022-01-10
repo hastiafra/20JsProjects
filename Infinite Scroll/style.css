@@ -49,7 +49,7 @@ img {
   transition: 200ms ease-in;
   filter: grayscale(1);
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 img:hover {
