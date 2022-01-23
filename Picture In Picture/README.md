@@ -2,7 +2,12 @@ Picture In Picture
 
 HTML/CSS/JS
 
-Fetching the data in JSON format from the Unsplash Api. API is limited to 50 requests per hour. 
+Media Devices WEB API
+
+Prompt users to select the media stream source on the button click.
+Dynamically inserting the selected media stream into the DOM.
+Picture in Picture mode is enabled by clicking on the second button.
+
 
 
 
