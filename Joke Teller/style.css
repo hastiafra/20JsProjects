@@ -1,0 +1,34 @@
+/* ROBOT.GIF from Giphy - https://giphy.com/gifs/robot-cinema-4d-eyedesyn-3o7abtn7DuREEpsyWY
+https://images.pexels.com/photos/3832098/pexels-photo-3832098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
+
+*/
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-image: url("https://images.pexels.com/photos/967016/pexels-photo-967016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30vh;
+
+}
+
+.robot{
+  padding: auto;
+  position: absolute;
+  bottom: 10px;
+  left:300px;
+}
