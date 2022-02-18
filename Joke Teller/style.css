@@ -1,20 +1,56 @@
-/* ROBOT.GIF from Giphy - https://giphy.com/gifs/robot-cinema-4d-eyedesyn-3o7abtn7DuREEpsyWY
-https://images.pexels.com/photos/3832098/pexels-photo-3832098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
-
-*/
-
 html {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background-image: url("https://images.pexels.com/photos/967016/pexels-photo-967016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
   position: relative;
+  background-color: black;
+}
+
+.bgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+.startBtn {
+  z-index: 99;
+  border-radius: 10px;
+  padding: 20px 30px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 1s ease;
+  
+}
+
+.startBtn:hover{
+  background-color: white;
+  color:black;
+  box-shadow: none;
+}
+
+.startBtn:active{
+  transform: scale(0.8);
+}
+
+
+.wrapper {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 150%;
 }
 
 .container {
@@ -23,12 +59,30 @@ body {
   align-items: center;
   flex-direction: column;
   padding-top: 30vh;
-
+  position: relative;
 }
 
-.robot{
+.robot {
   padding: auto;
   position: absolute;
-  bottom: 10px;
-  left:300px;
+  top: 130px;
+  left: 200px;
+  z-index: 99;
+}
+
+@media screen and (max-width: 1000px) {
+  .robot {
+    top: 330px;
+    left: 100px;
+    z-index: 99;
+    width: 300px;
+  }
+
+  .wrapper {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 195%;
+  }
 }
