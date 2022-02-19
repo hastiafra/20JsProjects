@@ -1,6 +1,6 @@
 import { APIKEY } from "./env.js";
 
-const startBtn = document.getElementById("startBtn");
+let startBtn = document.getElementById("startBtn");
 const audioElement = document.getElementById("audio")
 
 // VoiceRSS Javascript SDK
@@ -122,6 +122,11 @@ const VoiceRSS = {
 
 // test();
 
+const audioControl =() =>{
+  startBtn.disabled = !startBtn.disabled;
+}
+
+
 const tellJoke = (joke)=>{
 
   VoiceRSS.speech({
@@ -152,10 +157,14 @@ const getJokes = async () => {
       joke = `${data.joke}`
     }
     tellJoke(joke);
+    audioControl();
   
   } catch (err) {
     console.log("jokesAPI", err);
   }
 };
 
-getJokes();
+
+
+startBtn.addEventListener("click", getJokes);
+audioElement.addEventListener("ended", audioControl)
