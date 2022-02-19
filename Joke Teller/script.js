@@ -1,6 +1,5 @@
 import { APIKEY } from "./env.js";
 
-
 const startBtn = document.getElementById("startBtn");
 const audioElement = document.getElementById("audio")
 
@@ -108,17 +107,39 @@ const VoiceRSS = {
   },
 };
 
-const test = () => {
-  VoiceRSS.speech({
-    key: `${APIKEY}`,
-    src: "Hello, world!",
-    hl: "en-us",
-    v: "Linda",
-    r: 0,
-    c: "mp3",
-    f: "44khz_16bit_stereo",
-    ssml: false,
-  });
+// const test = () => {
+//   VoiceRSS.speech({
+//     key: `${APIKEY}`,
+//     src: "Hello, world!",
+//     hl: "en-us",
+//     v: "Linda",
+//     r: 0,
+//     c: "mp3",
+//     f: "44khz_16bit_stereo",
+//     ssml: false,
+//   });
+// };
+
+// test();
+
+const getJokes = async () => {
+  let joke = "";
+  try {
+    const res = await fetch(
+      "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+    );
+
+    const data = await res.json();
+    if (data.setup){
+      joke = `${data.setup}...${data.delivery}`
+    } else{
+      joke = `${data.joke}`
+    }
+    console.log(joke);
+  
+  } catch (err) {
+    console.log("jokesAPI", err);
+  }
 };
 
-test();
+getJokes();
