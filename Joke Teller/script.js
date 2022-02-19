@@ -122,6 +122,22 @@ const VoiceRSS = {
 
 // test();
 
+const tellJoke = (joke)=>{
+
+  VoiceRSS.speech({
+        key: `${APIKEY}`,
+        src: joke,
+        hl: "en-us",
+        v: "Linda",
+        r: 0,
+        c: "mp3",
+        f: "44khz_16bit_stereo",
+        ssml: false,
+      });
+}
+
+
+//fetching joke 
 const getJokes = async () => {
   let joke = "";
   try {
@@ -130,12 +146,12 @@ const getJokes = async () => {
     );
 
     const data = await res.json();
-    if (data.setup){
+    if(data.setup){
       joke = `${data.setup}...${data.delivery}`
     } else{
       joke = `${data.joke}`
     }
-    console.log(joke);
+    tellJoke(joke);
   
   } catch (err) {
     console.log("jokesAPI", err);
