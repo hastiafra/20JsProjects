@@ -1,3 +1,3 @@
 # 20JsProjects!
-Each folder contain a separate JavaScript project with its own READ ME file
+Each folder contains a separate JavaScript project with its own READ ME file
 
